@@ -1,0 +1,28 @@
+README
+
+PART 1. Read datasets
+
+First, we load the data as a table called Test. We load the activity (labels), person (subject_test) and list of measurements (Test) and we join them all together in a dataset called All_Test. Once we get the combined dataset we remove the temporary tables.
+
+We do the same for the same procedure for the training dataset, creating the dataframe All_Train.
+
+PART 2. Create unified dataset with relevant measurements.
+
+First we read the names of columns of different measurements (info) and the names of different activities (act).
+
+Then we concatenate both datasets (All_Test and All_Train) into one called All_Info. 
+After that we use change the column names for relevant ones (Activity, subject and the ones from dataframe info).
+And we remove the temporary datasets (All_Test and All_Train).
+
+Finally we check which columns contain the word "mean" or "std" (diminutive of standard deviation) using grepl, and we subset the data frame keeping only those columns. The assumption is that everything related to the mean or standard deviation can be needed, so it should be kept. 
+We also adapt the activity references, changing the number to their correspondent name,
+
+PART 3. Creation of summarize datasets
+
+In this part we use dplyr and reshape2 to create both the long and the wide summarizing datasets. 
+The long dataset is called: All_grouped
+The wide dataset is called: All2
+
+PART 4. Export of datasets
+
+We write both datasets into text files called "long_tidy_dataset" and "wide_tidy_dataset"
